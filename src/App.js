@@ -1,24 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState} from 'react';
+import{BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import Navbar from './Components/Navbar';
+import Home from './Components/Home'
+import AdminState from './Context/AdminState'
+import Login from './Components/Login'
+import Alert from './Components/Alert'
+import Users from './Components/Users'
+import Moretokens from './Components/Moretokens';
+import Access from './Components/Access';
 
 function App() {
+  const [alert, setAlert] = useState(null)
+  const host = "http://localhost:5002"
+
+  const showAlert = (message, type) =>{
+    setAlert({
+      msg : message,
+      type :type
+    })
+    setTimeout(() =>{
+      setAlert(null)
+    },3500)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Router>
+    <AdminState host={{host}}>
+    <Navbar/>
+    <Alert alert={alert}/>
+    <Routes>
+      <Route exact path="/" element={<Home prop={{showAlert}}/>}/>
+      <Route exact path="/login" element={<Login prop={{host, showAlert}}/>}/>
+      <Route exact path="/users" element={<Users prop={{host, showAlert}}/>}/>
+      <Route exact path="/mtokens" element={<Moretokens/>}/>
+      <Route exact path="/access" element={<Access/>}/>
+    </Routes>
+    </AdminState>
+    </Router>
+    </>
   );
 }
 
