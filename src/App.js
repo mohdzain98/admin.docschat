@@ -12,7 +12,7 @@ import Access from './Components/Access';
 
 function App() {
   const [alert, setAlert] = useState(null)
-  const host = process.env.REACT_APP_A_HOST 
+  const host=process.env.REACT_APP_AHOST
 
   const showAlert = (message, type) =>{
     setAlert({
