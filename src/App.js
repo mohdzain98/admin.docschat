@@ -14,7 +14,6 @@ function App() {
   const [alert, setAlert] = useState(null)
   const host = process.env.REACT_APP_A_HOST 
 
-
   const showAlert = (message, type) =>{
     setAlert({
       msg : message,

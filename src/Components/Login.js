@@ -27,6 +27,7 @@ const Login = (props) => {
     const handleLogin = async(e)=>{
         e.preventDefault()
         setLoader("spinner-border spinner-border-sm mx-2")
+        try{
         const response = await fetch(`${host}/api/auth/login`, {
             method: "POST",
             headers: {
@@ -47,11 +48,15 @@ const Login = (props) => {
                 showAlert(json.errors,"danger")
             }
           }
-          setLoader("")
+        }catch(err){
+          showAlert(err,'danger')
+        }
+        setLoader("")
     }
     
   return (
         <div className='container pb-4' id='login' style={{padding:'0 5%', marginTop:'-3%'}}>
+          <h3 className='mb-4'>Docschat Admin Panel</h3>
             <div className='box p-4' style={isTabletOrMobile?{width:"350px"}:{width:'500px'}}>
                 <form onSubmit={handleLogin}>
                 <div className="mb-3">
