@@ -2,7 +2,7 @@ import React,{useContext, useEffect} from 'react'
 import adminContext from '../Context/adminContext'
 import { Link } from 'react-router-dom'
 
-const Users = (props) => {
+const Users = () => {
     // const {showAlert} = props.prop
     const context = useContext(adminContext)
     const {users,getUsers} = context

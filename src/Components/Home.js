@@ -3,7 +3,7 @@ import adminContext from '../Context/adminContext'
 import { Link, useNavigate} from 'react-router-dom'
 // import '../Styling/home.css'
 
-const Home = (props) => {
+const Home = () => {
   // const {login} = props.prop
   const context = useContext(adminContext)
   const {users, getUsers, acess, getAcess, mtokens, getMtokens} = context
@@ -18,9 +18,8 @@ const Home = (props) => {
     getMtokens()
     // eslint-disable-next-line
   },[])
-  console.log(users.data)
   return (
-    <div className='container p-4' id='home' style={{marginTop:"-80px"}}>
+    <div className='container pb-4' id='home' style={{marginTop:'-3%'}}>
       <div className='row'>
         <div className='col-md-4 col-xs-12'>
           <div className="card my-4">

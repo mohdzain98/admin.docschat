@@ -1,23 +1,43 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
+  // let location = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout =()=>{
+    localStorage.removeItem('admintoken')
+    navigate("/login")
+  }
+
   return (
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Admin Docschat</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to='/'>Admin Docschat</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <Link class="nav-link active" aria-current="page" to="/">Home</Link>
                 </li>
-            </ul>
+                </ul>
+                {( !localStorage.getItem('admintoken')) ?"":
+                <div className="btn-group">
+                <button type="button" className="btn btn-secondary dropdown-toggle mx-2 me-2" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                <i className="fa-solid fa-user me-2" style={{color: "#FFD43B"}}></i>Admin
+                </button>
+                <ul className="dropdown-menu dropdown-menu-lg-end">
+                  <li><button className="dropdown-item" onClick={handleLogout} type="button">Logout</button></li>
+                </ul>
+              </div>
+              }
+              </div>
             </div>
-        </div>
-        </nav>
+            </nav>
       
     </div>
   )
