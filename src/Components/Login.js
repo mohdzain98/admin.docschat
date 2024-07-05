@@ -67,7 +67,7 @@ const Login = (props) => {
                     <label for="exampleInputPassword1" className="form-label">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={cred.password} onChange={onChange}/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" disabled={cred.email === "" || cred.password === ""}>Submit</button>
                 <span className={loader}></span>
                 </form>
             </div>
