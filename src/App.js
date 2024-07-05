@@ -30,8 +30,8 @@ function App() {
     <Navbar/>
     <Alert alert={alert}/>
     <Routes>
-      <Route exact path="/" element={<Home prop={{showAlert}}/>}/>
-      <Route exact path="/login" element={<Login prop={{host, showAlert}}/>}/>
+      <Route exact path="/" element={<Login prop={{host, showAlert}}/>}/>
+      <Route exact path="/home" element={<Home prop={{showAlert}}/>}/>
       <Route exact path="/users" element={<Users prop={{host, showAlert}}/>}/>
       <Route exact path="/mtokens" element={<Moretokens/>}/>
       <Route exact path="/access" element={<Access/>}/>

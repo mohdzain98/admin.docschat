@@ -15,7 +15,7 @@ const Login = (props) => {
 
     useEffect(()=>{
         if(localStorage.getItem('admintoken')){
-          navigate('/')
+          navigate('/home')
         }
         // eslint-disable-next-line
       },[])
@@ -42,7 +42,7 @@ const Login = (props) => {
             if(json.success){
               localStorage.setItem('admintoken', json.authToken)
               showAlert("Login Successfull","success")
-              navigate("/")
+              navigate("/home")
               getUsers()
             }else{
                 showAlert(json.errors,"danger")

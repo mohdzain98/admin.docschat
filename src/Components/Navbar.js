@@ -1,28 +1,28 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
-  // let location = useLocation()
+  const location = useLocation()
   const navigate = useNavigate()
 
   const handleLogout =()=>{
     localStorage.removeItem('admintoken')
-    navigate("/login")
+    navigate("/")
   }
 
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to='/'>Admin Docschat</Link>
+                <Link className="navbar-brand" to={location.pathname === '/'?'/':'/home'}>Admin Docschat</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <Link class="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link class="nav-link active" aria-current="page" to={location.pathname === '/'?'/':'/home'}>Home</Link>
                 </li>
                 </ul>
                 {( !localStorage.getItem('admintoken')) ?"":

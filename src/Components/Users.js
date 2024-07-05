@@ -16,7 +16,7 @@ const Users = () => {
     <div className='container pb-4' style={{padding:'0 5%', marginTop:'-3%'}}>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><Link to='/'>Home</Link></li>
+                <li class="breadcrumb-item"><Link to='/home'>Home</Link></li>
                 <li class="breadcrumb-item active" aria-current="page">Users</li>
             </ol>
         </nav>
